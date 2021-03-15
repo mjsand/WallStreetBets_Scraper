@@ -115,14 +115,15 @@ def Run_Code():
     ### timestamp, and the number of stock tickers you want displayed in the graph.
 
 def code_schedule():
-
-    schedule.every(30).seconds.do(Run_Code)
+    
+    schedule.every(12).hours.do(email_results)
     while 1:
         schedule.run_pending()
         time.sleep(1)
 
 def email_results():
-
+    
+    Run_Code()
     sender_email = 'masonservertest69@gmail.com'
     receiver_email = 'masonlightning@aol.com'
     password = str('Backdoor1')
@@ -138,5 +139,4 @@ def email_results():
     server.sendmail(sender_email, receiver_email, message.as_string())
     print('Email sent')
 
-Run_Code()
-email_results()
+code_schedule()
