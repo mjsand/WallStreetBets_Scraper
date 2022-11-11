@@ -114,28 +114,5 @@ def Run_Code():
     ### you can change the output of this script by changing the limit number in submissions, and also by changing the date in the
     ### timestamp, and the number of stock tickers you want displayed in the graph.
 
-def code_schedule():
-
-    schedule.every(30).seconds.do(Run_Code)
-    while 1:
-        schedule.run_pending()
-        time.sleep(1)
-
-def email_results():
-
-    sender_email = 'masonservertest69@gmail.com'
-    receiver_email = 'masonlightning@aol.com'
-    password = str('Backdoor1')
-    message = MIMEMultipart()
-    message['Subject'] = 'WSB Post Activity'
-    fp = open('WSBchart.jpg', 'rb')
-    image = MIMEImage(fp.read())
-    message.attach(image)
-    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    server.ehlo()
-    server.login(sender_email, password)
-    print('Login was successful')
-    server.sendmail(sender_email, receiver_email, message.as_string())
-    print('Email sent')
 
 Run_Code()
